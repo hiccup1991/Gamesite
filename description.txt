@@ -1,0 +1,13 @@
+https://docs.google.com/document/d/1xCsVuB4BFlXLqR7eg8j2-LUSscTxm61C5Q-g4O6x8pI/edit?usp=sharing
+
+The purpose of this sites are the following:
+
+1 - demo all our games and we have 25 now and growing so the site should dynamically get the game data from a file as we will be adding games all the times.
+
+2 - let people to put their email to subscribe to our New Game Announcement - using  madmini.com API
+
+3 - let people to contact us via the contact form
+https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
+
+4 - let people to enter their wechat ID to be added for “Game Experience”
+https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
