@@ -375,7 +375,6 @@ function setLanguage(country) {
     $("#newsletter-body").text(
       "告诉我们您的邮件地址。当我们有新游戏的时候，会用邮件通知您。"
     );
-    $("#contact-address").text("深圳湾生态园6栋南座912");
     $("#copyright").html(
       "&copy; 数字星河科技有限公司 <script>document.write(new Date().getFullYear());</script>"
     );

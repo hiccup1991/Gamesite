@@ -105,9 +105,10 @@
     <div id="hero-section" class="medium-margin">
         <div class="row hero-unit">
             <div class="hero-overlay"></div>
-            <video autoplay loop muted poster="images/poster.jpg" id="bgvid" class="img-fluid">
-                <source src="images/bg-vid.mp4" type="video/mp4"><!-- your video goes here -->
-            </video>
+            <!-- <video autoplay loop muted poster="images/poster.jpg" id="bgvid" class="img-fluid">
+                <source src="images/bg-vid.gif" type="video/gif">
+            </video> -->
+            <img src="images/bg-vid.gif" id="bgvid" class="img-fluid">
             <div class="hero-caption">
                 <h1>We Make <span class="colored">Awesome Games</span></h1>
             </div>
@@ -129,10 +130,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <p id="about-content" class="small-margin">We are a dedicated team of developers, designers,
-                        artists, programmers, and
-                        most importantly gaming enthusiasts. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce vitae ante pharetra, molestie nunc non, interdum ipsum.</p>
+                    <p id="about-content" class="small-margin">We are a group of interesting people doing fun games.</p>
                     <!-- <img id="awards" src="images/awards.png" class="img-fluid" alt="awads"> -->
                     <div id="awards" class="row">
                         <div id="wechat" class="col-md-3"><a href="weixin://dl/general"><img src="images/wechat.png"
@@ -160,12 +158,12 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col-md-11 small-margin">
+                <!-- <div class="col-md-11 small-margin">
                     <p>Here at Strider games we pride ourselves in delivering rich and polished experiences that
                         our
                         fanbase can enjoy and immerse themselve into. Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit. Suspendisse facilisis rhoncus nibh.</p>
-                </div>
+                </div> -->
                 <div class="col-md-12">
                     <ul class="game-tags">
                         <li id="sort_by_tag">Sort By Tag :</li>
@@ -367,81 +365,50 @@
             <a href="careers.html"></a><!-- Nav Anchor -->
             <div class="row heading tiny-margin">
                 <div class="col-md-auto">
-                    <h1 id="careers-title" class="animation-element slide-down">WE'RE <span class="colored">HIRING</span></h1>
+                    <h1 id="careers-title" class="animation-element slide-down">EXPERIENCE <span class="colored">OUR
+                            GAMS</span></h1>
                 </div>
                 <div class="col">
                     <hr class="animation-element extend">
                 </div>
             </div>
             <div class="row medium-margin">
-                <div class="col-md-11">
+                <!-- <div class="col-md-11">
                     <h2 class="short-hr-left">JOB OPENINGS</h2>
                     <p>Are you a talented and motivated individual? Then we would love to have you in our team.
                         Lorem
                         ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt, nisl non mattis
                         sollicitudin, risus quam tempor sem, vel interdum est libero non odio.</p><br>
+                </div> -->
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <h3 class="colored">Subscribe to <br />"Digital Galaxy"</h3>
+                        <img class="img-fluid" src="images/digitalgalaxy barcode.png" alt="screenshot">
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="job-card">
-                        <h3 class="colored">Pay attention to the "Digital Galaxy" public number</h3>
-                        <p id="digital-galaxy">Pay attention to the "Digital Galaxy" public number</p>
-                        <button class="button" data-toggle="modal" data-target="#modal1">View Details</button>
+                        <h3 class="colored">Subscribe to <br />"Wechat Public Platform"</h3>
+                        <img class="img-fluid" src="images/weixingongzhong.png" alt="screenshot">
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="lead-programmer"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title colored" id="lead-programmer">Digital Galaxy</h2>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <img class="img-fluid" src="images/digitalgalaxy barcode.png" alt="screenshot">
-                                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <h3 class="colored">Give us your <br />Wechat ID</h3><br />
+                        <form id="wechatID" data-toggle="validator">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Wechat ID" required data-error="Name is required">
+                                <div class="help-block with-errors"></div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="job-card">
-                        <h3 class="colored">Pay attention to the "WeChat" public number</h3>
-                        <p id="wechat-number">Pay attention to the "WeChat" public number</p>
-                        <button class="button" data-toggle="modal" data-target="#modal2">View Details</button>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade " id="modal2" tabindex="-1" role="dialog" aria-labelledby="level-designer"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title colored" id="level-designer">WeChat</h2>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <img class="img-fluid" src="images/weixingongzhong.png" alt="screenshot">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="job-card">
-                        <h3 class="colored">Tell us about your "wechat" number</h3>
-                        <p id="experience-game">Tell us about your "wechat" number</p><br />
-                        <button class="button">Submit</button>
+                            <button class="button" type="submit">SUBSCRIBE</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h2 id="newsletter-title" class="short-hr-center">OUR NEWSLETTER</h2>
-                    <p id="newsletter-body">Stay up to date with the team and our products by subscribing to our
-                        newsletter.</p>
+                    <h2 id="newsletter-title" class="short-hr-center">Subscribe to our Game Update</h2>
+                    <p id="newsletter-body">Give us your email so we can email you when we have new games.</p>
                     <form id="newsletter" data-toggle="validator">
                         <input type="email" id="emailsign" placeholder="Your email adress"> <!-- Email Field -->
                         <button type="submit" id="form-signup" class="button">SUBSCRIBE</button>
@@ -462,13 +429,13 @@
                 </div>
             </div>
             <div class="">
-                <div class="row small-margin">
+                <!-- <div class="row small-margin">
                     <div class="col-md-11">
                         <p>We would love to hear from you. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Integer viverra laoreet dolor sit amet blandit. Ut suscipit nisl ut risus volutpat
                             malesuada.</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-6">
                         <h2 class="short-hr-left">LEAVE US A MESSAGE</h2>
@@ -509,8 +476,7 @@
                                     <p>Website: <span class="colored"><a href="www.gamesafari.cn" target="_blank">www.gamesafari.cn</a></span></p>
                                 </li>
                                 <li><i class="fa fa-map-marker"></i>
-                                    <p>Address: <span class="colored" id="contact-address">Shenzhen Bay Ecological Park
-                                            6 South Block 912</span></p>
+                                    <p>Address: <span class="colored">深圳湾生态园6栋南座912</span></p>
                                 </li>
                             </ul>
                         </div>
@@ -525,7 +491,7 @@
     <footer id="main-footer">
         <div id="footer">
             <div class="container">
-                <p id="copyright">&copy; Digital Galaxy Technology Co., Ltd.
+                <p id="copyright">&copy; Shen Zhen Digital Galaxy Technology Limited
                     <script>
                         document.write(new Date().getFullYear());  // auto-updating year with javascript
                     </script>

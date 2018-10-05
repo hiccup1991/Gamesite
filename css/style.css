@@ -704,10 +704,14 @@ button {
 /* --------------------------- /////////// VIII. CAREERS SECTION /////////// --------------------------- */
 .job-card {
   text-align: center;
+  height: 350px;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   border-left: 2px solid #e48632;
   padding: 25px 35px;
   margin: 10px 0;
+}
+.job-card img {
+  width: auto;
 }
 .modal-content {
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
@@ -746,6 +750,27 @@ button {
 .close:hover {
   color: #e48632;
   opacity: 1;
+}
+/* --------------------------- /////////// WECHAT ID SECTION /////////// --------------------------- */
+#wechatID {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  padding: 5%;
+  margin-top: 25px;
+}
+#wechatID input {
+  width: 100%;
+  color: #fff;
+  background: none;
+  border-bottom: 2px solid #e48632 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  margin-bottom: 25px;
+}
+#wechatID .button {
+  margin: auto;
+  padding: 10px 15px;
+  font-size: 1.05rem;
 }
 /* -- Newsletter -- */
 #newsletter input {
