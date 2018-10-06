@@ -499,6 +499,10 @@ button {
 .game-description {
   margin: 15px 0;
 }
+#game-item {
+  height: 550px !important;
+  width: auto !important;
+}
 /* -- Modal -- */
 .expand {
   cursor: pointer;

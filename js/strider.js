@@ -232,101 +232,165 @@ $(document).ready(function() {
     });
   }
 
-  // FORM SCRIPTS
-  $("#contactForm")
-    .validator()
-    .on("submit", function(event) {
-      if (event.isDefaultPrevented()) {
-        // handle the invalid form...
-        formError();
-        submitMSG(false, "Did you fill in the form properly?");
-      } else {
-        // everything looks good!
-        event.preventDefault();
-        submitForm();
-      }
-    });
-
-  function submitForm() {
-    // Initiate Variables With Form Content
-    var name = $("#name").val();
-    var email = $("#email").val();
-    var message = $("#message").val();
-
-    $.ajax({
-      type: "POST",
-      url: "php/form-process.php",
-      data: "name=" + name + "&email=" + email + "&message=" + message,
-      success: function(text) {
-        if (text === "success") {
-          formSuccess();
-        } else {
-          formError();
-          submitMSG(false, text);
-        }
-      }
-    });
-  }
-
-  function formSuccess() {
-    $("#contactForm")[0].reset();
-    submitMSG(true, "Message Submitted!");
-  }
-
-  function formError() {
-    $("#contactForm").one(
-      "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-      function() {
-        $(this).removeClass();
-      }
-    );
-  }
-
-  function submitMSG(valid, msg) {
-    if (valid) {
-      var msgClasses = "h3 text-center text-success";
-    } else {
-      var msgClasses = "h3 text-center text-danger";
+  function addGame(game) {
+    var html = '<div class="row game-card';
+    for (var i = 0; i < game.type.length; i++) {
+      html += " ";
+      html += game.type[i];
     }
-    $("#msgSubmit")
-      .removeClass()
-      .addClass(msgClasses)
-      .text(msg);
+    html += '">';
+    html += '<div class="col-md-5 game-card-left">';
+    html +=
+      '<a href="#" class="js-video-button" data-video-id="285232623" data-channel="vimeo">';
+    html += '<div class="overlay">';
+    html += '<i class="fa fa-play fa-3x"></i>';
+    html += "</div>";
+    html += '<img id="game-item" src="GameData/';
+    html += game.name;
+    html += '/demo.png" class="img-fluid" alt="video thumbnail">';
+    html += "</a>";
+    html += "</div>";
+    html += '<div class="col-md-7 game-card-right">';
+    html += '<h2 class="short-hr-left">';
+    html += game.name;
+    html += "</h2>";
+    html += '<p class="tags"><span class="subtle">';
+    html += game.type[0];
+
+    for (var i = 1; i < game.type.length; i++) {
+      html += " | " + game.type[i];
+    }
+    html += "</span></p>";
+    html += '<p class="game-description">';
+    html += game.description;
+    html += "</p>";
+    html += '<div class="row">';
+    html += '<div class="col-md-6">';
+    html += '<img src="GameData/';
+    html += game.name;
+    html += '/experience.png" class="img-fluid">';
+    html += '<p id="experience">Experience</p>';
+    html += "</div>";
+    html += '<div class="col-md-6">';
+    html += '<img src="GameData/';
+    html += game.name;
+    html += '/online.png" class="img-fluid">';
+    html += '<p id="online">Online</p>';
+    html += "</div>";
+    html += "</div>";
+    html += "</div>";
+    html += "</div>";
+    $("#game-portofolio").append(html);
   }
+  var gamelist = [
+    {
+      name: "My Game",
+      description: "This is my first game",
+      type: ["mobile", "new"]
+    },
+    {
+      name: "My Game",
+      description: "This is my second game",
+      type: ["mobile", "pc"]
+    }
+  ];
+  for (var i = 0; i < gamelist.length; i++) addGame(gamelist[i]);
+
+  // // FORM SCRIPTS
+  // $("#contactForm")
+  //   .validator()
+  //   .on("submit", function(event) {
+  //     if (event.isDefaultPrevented()) {
+  //       // handle the invalid form...
+  //       formError();
+  //       submitMSG(false, "Did you fill in the form properly?");
+  //     } else {
+  //       // everything looks good!
+  //       event.preventDefault();
+  //       submitForm();
+  //     }
+  //   });
+
+  // function submitForm() {
+  //   // Initiate Variables With Form Content
+  //   var name = $("#name").val();
+  //   var email = $("#email").val();
+  //   var message = $("#message").val();
+
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "php/form-process.php",
+  //     data: "name=" + name + "&email=" + email + "&message=" + message,
+  //     success: function(text) {
+  //       if (text === "success") {
+  //         formSuccess();
+  //       } else {
+  //         formError();
+  //         submitMSG(false, text);
+  //       }
+  //     }
+  //   });
+  // }
+
+  // function formSuccess() {
+  //   $("#contactForm")[0].reset();
+  //   submitMSG(true, "Message Submitted!");
+  // }
+
+  // function formError() {
+  //   $("#contactForm").one(
+  //     "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+  //     function() {
+  //       $(this).removeClass();
+  //     }
+  //   );
+  // }
+
+  // function submitMSG(valid, msg) {
+  //   if (valid) {
+  //     var msgClasses = "h3 text-center text-success";
+  //   } else {
+  //     var msgClasses = "h3 text-center text-danger";
+  //   }
+  //   $("#msgSubmit")
+  //     .removeClass()
+  //     .addClass(msgClasses)
+  //     .text(msg);
+  // }
 
   // NEWSLETTER SIGNUP SCRIPTS
-  $("#newsletter")
-    .validator()
-    .on("submit", function(event) {
-      if (event.isDefaultPrevented()) {
-        // handle the invalid form...
-        signupError();
-        signupMSG(false, "Did you fill in the form properly?");
-      } else {
-        // everything looks good!
-        event.preventDefault();
-        submitSignup();
-      }
-    });
+  // $("#newsletter")
+  //   .validator()
+  //   .on("submit", function(event) {
+  //     if (event.isDefaultPrevented()) {
+  //       // handle the invalid form...
+  //       signupError();
+  //       signupMSG(false, "Did you fill in the form properly?");
+  //     } else {
+  //       // everything looks good!
+  //       event.preventDefault();
+  //       submitSignup();
+  //     }
+  //   });
 
-  function submitSignup() {
-    // Initiate Variables With Form Content
-    var emailsign = $("#emailsign").val();
+  // function submitSignup() {
+  //   // Initiate Variables With Form Content
+  //   var emailsign = $("#emailsign").val();
 
-    $.ajax({
-      type: "POST",
-      url: "php/newsletter-process.php",
-      data: "&emailsign=" + emailsign,
-      success: function(text) {
-        if (text === "success") {
-          signupSuccess();
-        } else {
-          signupError();
-          signupMSG(false, text);
-        }
-      }
-    });
-  }
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "php/newsletter-process.php",
+  //     data: "&emailsign=" + emailsign,
+  //     success: function(text) {
+  //       if (text === "success") {
+  //         signupSuccess();
+  //       } else {
+  //         signupError();
+  //         signupMSG(false, text);
+  //       }
+  //     }
+  //   });
+  // }
 
   function signupSuccess() {
     $("#newsletter")[0].reset();
