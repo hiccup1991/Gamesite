@@ -420,28 +420,39 @@ $(document).ready(function() {
 });
 
 function setLanguage(country) {
-  if (country == "China") {
+  if (country == "China" || country == "Hong Kong") {
+    $("#nav-about").html("关于");
+    $("#nav-games").html("游戏");
+    $("#nav-careers").html("招聘");
+    $("#nav-contact").html("联系");
+    $("#hero-text").html('我们制作了<span class="colored">很棒的游戏</span>');
     $("#about-title").html('关于<span class="colored">我们');
-    $("#about-content").text(
+    $("#about-content").html(
       "我们是一群热爱游戏的画家，设计师，程序员。我们只希望为您开发至好的游戏。联系我们，你要开发的游戏我们都能做到。"
     );
     $("#games-title").html('我们的<span class="colored">游戏');
-    $("sort_by_tag").text("分类");
-    $("sort_by_new").text("新");
-    $("sort_by_all").text("全部");
-    $("sort_by_pc").text("休闲");
-    $("sort_by_mobile").text("烧脑");
+    $("#sort_by_tag").html("分类");
+    $("#sort_by_new a").html("新");
+    $("#sort_by_all a").html("全部");
+    $("#sort_by_pc a").html("休闲");
+    $("#sort_by_mobile a").html("烧脑");
     $("#careers-title").html('体验我们的<span class="colored">游戏');
-    $("#digital-galaxy").text("关注“数字星河”公众号");
-    $("#wechat-number").text("关注“微信”公众号");
-    $("#experience-game").text("告诉我们您的微信号");
-    $("#newsletter-title").text("订阅我们的新游戏报告");
-    $("#newsletter-body").text(
+    $("#digital-galaxy").html("关注“数字星河”公众号");
+    $("#wechat-platform").html("关注“微信”公众号");
+    $("#wechat-id").html("告诉我们您的微信号");
+    $("#wechatID #subscribe").html("订阅");
+    $("#newsletter-title").html("订阅我们的新游戏报告");
+    $("#newsletter-body").html(
       "告诉我们您的邮件地址。当我们有新游戏的时候，会用邮件通知您。"
     );
-    $("#copyright").html(
-      "&copy; 数字星河科技有限公司 <script>document.write(new Date().getFullYear());</script>"
-    );
+    $("#newsletter #subscribe").html("订阅");
+    $("#contact-us").html('保持<span class="colored">联系</span>');
+    $("#leave-message").html("给我们留言");
+    $("#send-message").html("发信息");
+    $("#our-details").html("我们的细节");
+    $("#copyright").html("&copy; 数字星河科技有限公司 ");
+    var year = new Date().getFullYear();
+    $("#copyright").append(year);
   }
 }
 
