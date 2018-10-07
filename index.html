@@ -167,10 +167,10 @@
                 <div class="col-md-12">
                     <ul class="game-tags">
                         <li id="sort_by_tag">Sort By Tag :</li>
-                        <li id="sort_by_new"><a href="#" data-filter=".new">NEW</a></li>
-                        <li id="sort_by_all"><a href="#" data-filter="*">ALL</a></li>
-                        <li id="sort_by_pc"><a href="#" data-filter=".pc">PC</a></li>
-                        <li id="sort_by_mobile"><a href="#" data-filter=".mobile">MOBILE</a></li>
+                        <li id="sort_by_new"><a href="#" data-filter="new">NEW</a></li>
+                        <li id="sort_by_all"><a href="#" data-filter="all">ALL</a></li>
+                        <li id="sort_by_pc"><a href="#" data-filter="pc">PC</a></li>
+                        <li id="sort_by_mobile"><a href="#" data-filter="mobile">MOBILE</a></li>
                     </ul>
                 </div>
             </div>
@@ -217,6 +217,10 @@
                             <div class="form-group">
                                 <input type="hidden" name="message" value="wechatid">
                                 <input type="text" id="name" name="email" placeholder="Wechat ID" required data-error="Name is required">
+                                <!-- Success Message -->
+                                <div class="thankyou_message" style="display:none;">
+                                    <p>Thanks for contacting us! We will get back to you!</p>
+                                </div>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <button id="subscribe" class="button" type="submit">SUBSCRIBE</button>
@@ -228,6 +232,10 @@
                 <div class="col-md-12 text-center">
                     <h2 id="newsletter-title" class="short-hr-center">Subscribe to our Game Update</h2>
                     <p id="newsletter-body">Give us your email so we can email you when we have new games.</p>
+                    <!-- Success Message -->
+                    <div class="thankyou_message" style="display:none;">
+                        <p>Thanks for contacting us! We will get back to you!</p>
+                    </div>
                     <form id="newsletter" class="gform" data-toggle="validator" method="POST" action="https://script.google.com/macros/s/AKfycbyiQBR7VVE_NaWTXDh4pVVzwCNgpY5Bkm87wcYR/exec">
                         <input type="hidden" name="message" value="gameupdate">
                         <input type="email" id="emailsign" name="email" placeholder="Your email adress">
@@ -277,12 +285,12 @@
                                 <!-- Message Field -->
                                 <textarea id="message" form="contactForm" name="message" placeholder="Message*"
                                     required data-error="Message cannot be empty"></textarea>
-                                <p class="subtle">* required field</p>
+                                <p id="required" class="subtle">* required field</p>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <!-- Success Message -->
                             <div class="thankyou_message" style="display:none;">
-                                <h4>Thanks for contacting us! We will get back to you soon!</h4>
+                                <p>Thanks for contacting us! We will get back to you soon!</p>
                             </div>
                             <!-- Submit Button -->
                             <button id="send-message" type="submit" class="button">SEND MESSAGE</button>
@@ -302,7 +310,9 @@
                                     <p>Website: <span class="colored"><a href="www.gamesafari.cn" target="_blank">www.gamesafari.cn</a></span></p>
                                 </li>
                                 <li><i class="fa fa-map-marker"></i>
-                                    <p>Address: <span class="colored">深圳湾生态园6栋南座912</span></p>
+                                    <p id="address">Address: <span class="colored">Room 912，South Wing， Bldg 6，
+                                            ShenZhenWan Science
+                                            and Technology Ecological Garden， Shen Zhen</span></p>
                                 </li>
                             </ul>
                         </div>
@@ -336,6 +346,8 @@
     <script src="js/lightbox.min.js"></script>
     <script src="js/jquery-modal-video.min.js"></script>
     <script src="js/validator.min.js"></script>
+    <script src="js/gamedata_en.js"></script>
+    <script src="js/gamedata_ch.js"></script>
     <script src="js/strider.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64kJJiSynOc9ZqkNMOyl94cvsw5Z2uno"></script>
 </body>

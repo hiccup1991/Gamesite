@@ -1,3 +1,4 @@
+var country = "United State";
 $(document).ready(function() {
   "use strict";
 
@@ -66,6 +67,18 @@ $(document).ready(function() {
   $window.on("scroll resize", check_if_in_view);
   $window.trigger("scroll");
 
+  // GET CLIENT COUNTRY
+  $.ajax("http://ip-api.com/json").then(
+    function success(response) {
+      //alert(response.country);
+      country = response.country;
+      setLanguage(response.country);
+    },
+
+    function fail(data, status) {
+      setLanguage("United State");
+    }
+  );
   //STOP VIDEO FROM PLAYING AFTER CLOSING A MODAL
   $("body").on("hidden.bs.modal", function(e) {
     var $iframes = $(e.target).find("iframe");
@@ -232,70 +245,6 @@ $(document).ready(function() {
     });
   }
 
-  function addGame(game) {
-    var html = '<div class="row game-card';
-    for (var i = 0; i < game.type.length; i++) {
-      html += " ";
-      html += game.type[i];
-    }
-    html += '">';
-    html += '<div class="col-md-5 game-card-left">';
-    html +=
-      '<a href="#" class="js-video-button" data-video-id="285232623" data-channel="vimeo">';
-    html += '<div class="overlay">';
-    html += '<i class="fa fa-play fa-3x"></i>';
-    html += "</div>";
-    html += '<img id="game-item" src="GameData/';
-    html += game.name;
-    html += '/demo.png" class="img-fluid" alt="video thumbnail">';
-    html += "</a>";
-    html += "</div>";
-    html += '<div class="col-md-7 game-card-right">';
-    html += '<h2 class="short-hr-left">';
-    html += game.name;
-    html += "</h2>";
-    html += '<p class="tags"><span class="subtle">';
-    html += game.type[0];
-
-    for (var i = 1; i < game.type.length; i++) {
-      html += " | " + game.type[i];
-    }
-    html += "</span></p>";
-    html += '<p class="game-description">';
-    html += game.description;
-    html += "</p>";
-    html += '<div class="row">';
-    html += '<div class="col-md-6">';
-    html += '<img src="GameData/';
-    html += game.name;
-    html += '/experience.png" class="img-fluid">';
-    html += '<p id="experience">Experience</p>';
-    html += "</div>";
-    html += '<div class="col-md-6">';
-    html += '<img src="GameData/';
-    html += game.name;
-    html += '/online.png" class="img-fluid">';
-    html += '<p id="online">Online</p>';
-    html += "</div>";
-    html += "</div>";
-    html += "</div>";
-    html += "</div>";
-    $("#game-portofolio").append(html);
-  }
-  var gamelist = [
-    {
-      name: "My Game",
-      description: "This is my first game",
-      type: ["mobile", "new"]
-    },
-    {
-      name: "My Game",
-      description: "This is my second game",
-      type: ["mobile", "pc"]
-    }
-  ];
-  for (var i = 0; i < gamelist.length; i++) addGame(gamelist[i]);
-
   // // FORM SCRIPTS
   // $("#contactForm")
   //   .validator()
@@ -423,7 +372,7 @@ function setLanguage(country) {
   if (country == "China" || country == "Hong Kong") {
     $("#nav-about").html("关于");
     $("#nav-games").html("游戏");
-    $("#nav-careers").html("招聘");
+    $("#nav-careers").html("体验");
     $("#nav-contact").html("联系");
     $("#hero-text").html('我们制作了<span class="colored">很棒的游戏</span>');
     $("#about-title").html('关于<span class="colored">我们');
@@ -440,22 +389,106 @@ function setLanguage(country) {
     $("#digital-galaxy").html("关注“数字星河”公众号");
     $("#wechat-platform").html("关注“微信”公众号");
     $("#wechat-id").html("告诉我们您的微信号");
-    $("#wechatID #subscribe").html("订阅");
+    $("#wechatID #subscribe").html("加我的微信到游戏体验");
     $("#newsletter-title").html("订阅我们的新游戏报告");
     $("#newsletter-body").html(
       "告诉我们您的邮件地址。当我们有新游戏的时候，会用邮件通知您。"
     );
+    $("#newsletter #emailsign").attr("placeholder", "邮件地址");
     $("#newsletter #subscribe").html("订阅");
     $("#contact-us").html('保持<span class="colored">联系</span>');
+    $("#contactForm #message").attr("placeholder", "内容");
+    $("#contactForm #message").attr("data-error", "内容是必须的");
+    $("#contactForm #name").attr("placeholder", "名字");
+    $("#contactForm #name").attr("data-error", "名字是必须的");
+    $("#contactForm #email").attr("placeholder", "邮件地址");
+    $("#contactForm #email").attr("data-error", "邮件地址是必须的");
+    $("#contactForm #required").html("* 必须");
     $("#leave-message").html("给我们留言");
     $("#send-message").html("发信息");
     $("#our-details").html("我们的细节");
+    $("#address").html(
+      'Address: <span class="colored">深圳湾生态园6栋南座912</span>'
+    );
     $("#copyright").html("&copy; 数字星河科技有限公司 ");
     var year = new Date().getFullYear();
     $("#copyright").append(year);
+    for (var i = 0; i < gamelist_ch.length; i++) addGame(gamelist_ch[i], "all");
+  } else {
+    for (var i = 0; i < gamelist_en.length; i++) addGame(gamelist_en[i], "all");
   }
 }
 
+function addGame(game, selector) {
+  var html = '<div class="row game-card';
+  if (selector != "all") {
+    var flag = false;
+    for (var i = 0; i < game.type.length; i++) {
+      //alert(game.type[i]);
+      if (game.type[i] == selector) {
+        flag = true;
+        break;
+      }
+    }
+    if (flag == false) return;
+  }
+  for (var i = 0; i < game.type.length; i++) {
+    html += " ";
+    if (game.type[i] == "新" || game.type[i] == "new") {
+      html += "new";
+    } else if (game.type[i] == "烧脑" || game.type[i] == "mobile") {
+      html += "mobile";
+    } else if (game.type[i] == "休闲" || game.type[i] == "pc") {
+      html += "pc";
+    } else if (game.type[i] == "全部" || game.type[i] == "all") {
+      html += "all";
+    }
+  }
+  html += '">';
+  html += '<div class="col-md-5 game-card-left">';
+  html +=
+    '<a href="#" class="js-video-button" data-video-id="285232623" data-channel="vimeo">';
+  html += '<div class="overlay">';
+  html += '<i class="fa fa-play fa-3x"></i>';
+  html += "</div>";
+  html += '<img id="game-item" src="GameData/';
+  html += game.name;
+  html += '/demo.png" class="img-fluid" alt="video thumbnail">';
+  html += "</a>";
+  html += "</div>";
+  html += '<div class="col-md-7 game-card-right">';
+  html += '<h2 class="short-hr-left">';
+  html += game.name;
+  html += "</h2>";
+  html += '<p class="tags"><span class="subtle">';
+  html += game.type[0];
+
+  for (var i = 1; i < game.type.length; i++) {
+    html += " | " + game.type[i];
+  }
+  html += "</span></p>";
+  html += '<p class="game-description">';
+  html += game.description;
+  html += "</p>";
+  html += '<div class="row">';
+  html += '<div class="col-md-6">';
+  html += '<img src="GameData/';
+  html += game.name;
+  html += '/experience.png" class="img-fluid">';
+  html += '<p id="experience">Experience</p>';
+  html += "</div>";
+  html += '<div class="col-md-6">';
+  html += '<img src="GameData/';
+  html += game.name;
+  html += '/online.png" class="img-fluid">';
+  html += '<p id="online">Online</p>';
+  html += "</div>";
+  html += "</div>";
+  html += "</div>";
+  html += "</div>";
+  $("#game-portofolio").append(html);
+  $("#game-portofolio").css("height", "auto");
+}
 window.onload = function() {
   //INITIALIZE ISOTIPE
   // cache container
@@ -467,23 +500,30 @@ window.onload = function() {
   // filter items when filter link is clicked
   $(".game-tags li a").on("click", function() {
     var selector = $(this).attr("data-filter");
-    $container.isotope({ filter: selector });
+    //$container.isotope({ filter: selector });
+    $("#game-portofolio").html("");
+    if (country == "China") {
+      switch (selector) {
+        case "新":
+          selector = "new";
+          break;
+        case "烧脑":
+          selector = "mobile";
+          break;
+        case "休闲":
+          selector = "pc";
+          break;
+        case "全部":
+          selector = "all";
+          break;
+      }
+      for (var i = 0; i < gamelist_ch.length; i++)
+        addGame(gamelist_ch[i], selector);
+    } else for (var i = 0; i < gamelist_en.length; i++) addGame(gamelist_en[i], selector);
     return false;
   });
-
   // HIDE LOADING SCREEN WHEN PAGE IS LOADED
   $("#progress").animate({ width: "100%" }, 300, function() {
     $("#loader-wrapper").addClass("loaded");
   });
-
-  // GET CLIENT COUNTRY
-  $.ajax("http://ip-api.com/json").then(
-    function success(response) {
-      setLanguage(response.country);
-    },
-
-    function fail(data, status) {
-      setLanguage("United State");
-    }
-  );
 };
