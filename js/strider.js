@@ -453,7 +453,9 @@ function addGame(game, selector) {
   html += "</div>";
   html += '<img id="game-item" src="GameData/';
   html += game.name;
-  html += '/demo.png" class="img-fluid" alt="video thumbnail">';
+  html += "/";
+  html += game.name;
+  html += '.gif" class="img-fluid" alt="video thumbnail">';
   html += "</a>";
   html += "</div>";
   html += '<div class="col-md-7 game-card-right">';
