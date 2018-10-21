@@ -68,16 +68,33 @@ $(document).ready(function() {
   $window.trigger("scroll");
 
   // GET CLIENT COUNTRY
-  $.ajax("http://ip-api.com/json").then(
-    function success(response) {
-      //alert(response.country);
-      country = response.country;
-      setLanguage(response.country);
-    },
+  // $.ajax("http://ip-api.com/json").then(
+  //   function success(response) {
+  //     //alert(response.country);
+  //     country = response.country;
+  //     setLanguage(response.country);
+  //   },
 
-    function fail(data, status) {
-      setLanguage("United State");
-    }
+  //   function fail(data, status) {
+  //     setLanguage("United State");
+  //   }
+  // );
+  // $.getJSON("http://freegeoip.net/json/", function(data) {
+  //   country = data.country_name;
+  //   setLanguage(response.country);
+  // });
+  $.get(
+    "https://ipinfo.io",
+    function(response) {
+      if (response.country == "CN" || response.country == "HK") {
+        country = "China";
+        setLanguage(country);
+      } else {
+        country = "United State";
+        setLanguage(country);
+      }
+    },
+    "jsonp"
   );
   //STOP VIDEO FROM PLAYING AFTER CLOSING A MODAL
   $("body").on("hidden.bs.modal", function(e) {
@@ -370,6 +387,7 @@ $(document).ready(function() {
 
 function setLanguage(country) {
   if (country == "China" || country == "Hong Kong") {
+    $("#logo").html('<span class="colored">游猎</span>');
     $("#nav-about").html("关于");
     $("#nav-games").html("游戏");
     $("#nav-careers").html("体验");
@@ -446,17 +464,11 @@ function addGame(game, selector) {
   }
   html += '">';
   html += '<div class="col-md-5 game-card-left">';
-  html +=
-    '<a href="#" class="js-video-button" data-video-id="285232623" data-channel="vimeo">';
-  html += '<div class="overlay">';
-  html += '<i class="fa fa-play fa-3x"></i>';
-  html += "</div>";
   html += '<img id="game-item" src="GameData/';
   html += game.name;
   html += "/";
   html += game.name;
   html += '.gif" class="img-fluid" alt="video thumbnail">';
-  html += "</a>";
   html += "</div>";
   html += '<div class="col-md-7 game-card-right">';
   html += '<h2 class="short-hr-left">';
@@ -474,16 +486,20 @@ function addGame(game, selector) {
   html += "</p>";
   html += '<div class="row">';
   html += '<div class="col-md-6">';
-  html += '<img src="GameData/';
-  html += game.name;
-  html += '/experience.png" class="img-fluid">';
-  html += '<p id="experience">Experience</p>';
+  if (game.experience == 1) {
+    html += '<img src="GameData/';
+    html += game.name;
+    html += '/experience.png" class="img-fluid">';
+    html += '<p id="experience">Experience</p>';
+  }
   html += "</div>";
   html += '<div class="col-md-6">';
-  html += '<img src="GameData/';
-  html += game.name;
-  html += '/online.png" class="img-fluid">';
-  html += '<p id="online">Online</p>';
+  if (game.online == 1) {
+    html += '<img src="GameData/';
+    html += game.name;
+    html += '/online.png" class="img-fluid">';
+    html += '<p id="online">Online</p>';
+  }
   html += "</div>";
   html += "</div>";
   html += "</div>";
@@ -491,6 +507,7 @@ function addGame(game, selector) {
   $("#game-portofolio").append(html);
   $("#game-portofolio").css("height", "auto");
 }
+
 window.onload = function() {
   //INITIALIZE ISOTIPE
   // cache container
