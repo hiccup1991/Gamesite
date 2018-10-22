@@ -68,7 +68,10 @@
     event.preventDefault(); // we are submitting via xhr below
     var form = event.target;
     var data = getFormData(form); // get the values submitted in the form
-
+    var thankYouMessage = form.querySelector(".thankyou_message");
+    if (thankYouMessage) {
+      thankYouMessage.style.display = "none";
+    }
     /* OPTION: Remove this comment to enable SPAM prevention, see README.md
     if (validateHuman(data.honeypot)) {  //if form is filled, form will not be submitted
       return false;
@@ -83,7 +86,7 @@
         return false;
       }
     } else {
-      disableAllButtons(form);
+      //disableAllButtons(form);
       var url = form.action;
       var xhr = new XMLHttpRequest();
       xhr.open("POST", url);
